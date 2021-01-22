@@ -3,7 +3,7 @@
     "title": "HAS Module Manifest",
     "description": "Manifest for HAS module: https://www.mega.com",
     "type": "object",
-    "required": ["Id", "Description"],
+    "required": ["id", "description"],
     "definitions": {
         "VersionRange" : {
             "type": "string",
@@ -18,40 +18,40 @@
                 "description": "Additional module properties"
             }
         },
-        "ModuleType": {
+        "moduleType": {
             "type": "string",
             "enum": ["AddOn", "Core", "System"]
         },
-        "Version": {
+        "version": {
             "type": "string",
             "pattern": "^([0-9]+)\\.([0-9]+)\\.([0-9]+)$"
         },
-        "ProductName": {
+        "productName": {
             "type": "string",
             "description": "Product name"
         },
-        "Id": {
+        "id": {
             "type": "string",
             "pattern": "^[A-Za-z_0-9][A-Za-z0-9_\\.-]*$",
             "description": "Module unique id"
         },
-        "Name": {
+        "name": {
             "type": "string",
             "pattern": "^[a-z_][a-z0-9_\\s\\.-]+$"
         },
-        "Description": {
+        "description": {
             "type": "string"
         },
-        "Title": {
+        "title": {
             "type": "string"
         },
-        "Copyright": {
+        "copyright": {
             "type": "string"
         },
-        "SourceRepositoryUrl": {
+        "sourceRepositoryUrl": {
             "type":"string"
         },
-        "JSAddonsPaths": {
+        "jsAddonsPaths": {
             "type": "array",
             "description": "Embedded module script to include in Web Desktop page",
             "uniqueItems": true,
@@ -60,22 +60,22 @@
                 "format": "uri-reference"
             }
         },
-        "ExcludedMetricPaths": {
+        "excludedMetricPaths": {
             "type": "array",
             "uniqueItems": true,
             "items": {
                 "type": "string"
             }
         },
-        "EnabledOnSettingsMode": {
+        "enabledOnSettingsMode": {
             "type": "boolean",
             "description": "Set to true if the module must be loaded in HAS settings mode (before database initialization)"
         },
-        "ShowInPortal": {
+        "showInPortal": {
             "type": "boolean",
             "description": "Add a shorcut to the module in the Portal page"
         },
-        "IgnoreSynchronization": {
+        "ignoreSynchronization": {
             "type": "boolean",
             "description": "False if the module must not be synchronizes betwwen cluster nodes"
         },
@@ -84,17 +84,17 @@
             "description": "Module dependency constraints",
             "items": {
                 "type": "object",
-                "required": ["Id"],
+                "required": ["id"],
                 "properties": {
-                    "Id": {
+                    "id": {
                         "type": "string",
                         "description": "Dependent module id"
                     },
-                    "Version": {
+                    "version": {
                         "$ref": "#/definitions/VersionRange",
                         "description": "Dependent module version range"
                     },
-                    "Optional" : {
+                    "optional" : {
                         "type": "boolean",
                         "description": ""
                     }
@@ -103,33 +103,33 @@
             },
             "additionalProperties": false
         },
-        "ServerVersionRange": {
+        "serverVersionRange": {
             "$ref": "#/definitions/VersionRange",
             "description": "HAS version range constraint"
         },
-        "Tags": {
+        "tags": {
             "type": "array",
             "uniqueItems": true,
             "items": {
                 "type": "string"
             }
         },
-        "Kind": {
+        "kind": {
             "type": "string",
             "enum": ["Site", "WebService", "Tool", "Container", "CustomData", "Hopex", "Redis", "Macro", "Data", "Extension"]
         },
-        "RequireLicenseAcceptance": {
+        "requireLicenseAcceptance": {
             "type": "boolean"
         },
-        "LicenseUrl": {
+        "licenseUrl": {
             "type": "string",
             "format": "uri"
         },
-        "HelpUrl": {
+        "helpUrl": {
             "type": "string",
             "format": "uri"
         },
-        "NodeRoleConstraints": {
+        "nodeRoleConstraints": {
             "type": "array",
             "uniqueItems": true,
             "items": {
@@ -137,13 +137,13 @@
                 "enum": ["Front", "Back", "Jobs"]
             }
         },
-        "IsSystem": {
+        "isSystem": {
             "type": "boolean"
         },
-        "ConsoleMenuText": {
+        "consoleMenuText": {
             "type":"string"
         },
-        "ConsoleMenuPath": {
+        "consoleMenuPath": {
             "type": "string",
             "format": "uri-reference"
         },
@@ -152,21 +152,21 @@
             "description": "File mappings used to generate the Hopex module",
             "items": {
                 "type":"object",
-                "required": ["To"],
+                "required": ["to"],
                 "properties": {
-                    "From": {
+                    "from": {
                         "type":"string"
                     },
-                    "To": {
+                    "to": {
                         "type": "string"
                     },
-                    "Includes": {
+                    "includes": {
                         "type": "array",
                         "items": {
                             "type":"string"
                         }
                     },
-                    "Excludes": {
+                    "excludes": {
                         "type": "array",
                         "items": {
                             "type":"string"
@@ -180,21 +180,21 @@
             "description": "File mappings to include in the module package",
             "items": {
                 "type":"object",
-                "required": ["To"],
+                "required": ["to"],
                 "properties": {
-                    "From": {
+                    "from": {
                         "type":"string"
                     },
-                    "To": {
+                    "to": {
                         "type": "string"
                     },
-                    "Includes": {
+                    "includes": {
                         "type": "array",
                         "items": {
                             "type":"string"
                         }
                     },
-                    "Excludes": {
+                    "excludes": {
                         "type": "array",
                         "items": {
                             "type":"string"
@@ -205,22 +205,22 @@
         }        
     },
     "dependencies": {
-        "ConsoleMenuText": [
-            "ConsoleMenuPath"
+        "consoleMenuText": [
+            "consoleMenuPath"
         ],
-        "ConsoleMenuPath": [
-            "ConsoleMenuText"
+        "consoleMenuPath": [
+            "consoleMenuText"
         ],
-        "RequireLicenseAcceptance": [
-            "LicenseUrl"
+        "requireLicenseAcceptance": [
+            "licenseUrl"
         ]
     },
     "if": {
-        "properties": { "Kind": { "const": "Site" } }
+        "properties": { "kind": { "const": "Site" } }
     },
     "then": {
         "properties": { 
-            "PathPrefix": {
+            "pathPrefix": {
                 "type": "string",
                 "format": "uri-reference",
                 "description": "Module path prefix"
